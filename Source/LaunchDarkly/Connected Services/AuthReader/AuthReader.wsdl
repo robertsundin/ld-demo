@@ -1,0 +1,1478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.mytravel.se" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.mytravel.se" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.mytravel.se">
+      <s:element name="GetActiveDirectoryUserInformation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="callerId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActiveDirectoryUserInformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetActiveDirectoryUserInformationResult" type="tns:ActiveDirectoryUserInformationResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ActiveDirectoryUserInformationResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Messages" type="tns:ArrayOfMessage" />
+          <s:element minOccurs="0" maxOccurs="1" name="User" type="tns:ActiveDirectoryUserInformation" />
+          <s:element minOccurs="1" maxOccurs="1" name="DatabaseId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DatabaseName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Message" nillable="true" type="tns:Message" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Message">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="logMsg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="userMsg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="className" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="propertyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="requestId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="serviceId" type="s:string" />
+        </s:sequence>
+        <s:attribute name="messageId" type="s:int" use="required" />
+        <s:attribute name="severityId" type="s:int" use="required" />
+      </s:complexType>
+      <s:complexType name="ActiveDirectoryUserInformation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PhoneNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FaxNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CellPhoneNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Department" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ManagerId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="ActiveDirectoryUserInformationResponse" nillable="true" type="tns:ActiveDirectoryUserInformationResponse" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetActiveDirectoryUserInformationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetActiveDirectoryUserInformation" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveDirectoryUserInformationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetActiveDirectoryUserInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="isAuthorizedXMLSoapIn">
+    <wsdl:part name="accessProfileRequestXML" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="isAuthorizedXMLSoapOut">
+    <wsdl:part name="isAuthorizedXMLResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="isAuthorizedXMLFromParamsSoapIn">
+    <wsdl:part name="userNo" type="s:string" />
+    <wsdl:part name="systemRoleName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="isAuthorizedXMLFromParamsSoapOut">
+    <wsdl:part name="isAuthorizedXMLFromParamsResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="isAuthorizedSoapIn">
+    <wsdl:part name="userNo" type="s:string" />
+    <wsdl:part name="systemRoleName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="isAuthorizedSoapOut">
+    <wsdl:part name="isAuthorizedResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAccessProfileSoapIn">
+    <wsdl:part name="userNo" type="s:string" />
+    <wsdl:part name="systemId" type="s:long" />
+  </wsdl:message>
+  <wsdl:message name="getAccessProfileSoapOut">
+    <wsdl:part name="getAccessProfileResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAccessProfileByIdSoapIn">
+    <wsdl:part name="accessProfileTypeId" type="s:long" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAccessProfileByIdSoapOut">
+    <wsdl:part name="getAccessProfileByIdResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAccessProfileForSystemRoleXMLFromParamsSoapIn">
+    <wsdl:part name="userNo" type="s:string" />
+    <wsdl:part name="systemRoleName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAccessProfileForSystemRoleXMLFromParamsSoapOut">
+    <wsdl:part name="getAccessProfileForSystemRoleXMLFromParamsResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAccessProfileForUserRoleSoapIn">
+    <wsdl:part name="roleId" type="s:long" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAccessProfileForUserRoleSoapOut">
+    <wsdl:part name="getAccessProfileForUserRoleResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAccessProfileValuesForUserRoleSoapIn">
+    <wsdl:part name="userNo" type="s:string" />
+    <wsdl:part name="roleId" type="s:long" />
+    <wsdl:part name="editUserNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAccessProfileValuesForUserRoleSoapOut">
+    <wsdl:part name="getAccessProfileValuesForUserRoleResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listAllAccessProfileValueTypesSoapIn">
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listAllAccessProfileValueTypesSoapOut">
+    <wsdl:part name="listAllAccessProfileValueTypesResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listRolesForItProductSoapIn">
+    <wsdl:part name="itProductId" type="s:long" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listRolesForItProductSoapOut">
+    <wsdl:part name="listRolesForItProductResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getRolesForSystemRoleSoapIn">
+    <wsdl:part name="systemRoleName" type="s:string" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getRolesForSystemRoleSoapOut">
+    <wsdl:part name="getRolesForSystemRoleResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getRoleByIdSoapIn">
+    <wsdl:part name="roleId" type="s:long" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getRoleByIdSoapOut">
+    <wsdl:part name="getRoleByIdResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getSystemRoleByNameSoapIn">
+    <wsdl:part name="systemRoleName" type="s:string" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getSystemRoleByNameSoapOut">
+    <wsdl:part name="getSystemRoleByNameResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getSystemRoleForItProductAndRoleSoapIn">
+    <wsdl:part name="userNo" type="s:string" />
+    <wsdl:part name="itProductId" type="s:long" />
+    <wsdl:part name="roleId" type="s:long" />
+  </wsdl:message>
+  <wsdl:message name="getSystemRoleForItProductAndRoleSoapOut">
+    <wsdl:part name="getSystemRoleForItProductAndRoleResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listSystemRolesForITSystemSoapIn">
+    <wsdl:part name="userNo" type="s:string" />
+    <wsdl:part name="itProductId" type="s:long" />
+  </wsdl:message>
+  <wsdl:message name="listSystemRolesForITSystemSoapOut">
+    <wsdl:part name="listSystemRolesForITSystemResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listAllRolesNotAssociatedWithUserSoapIn">
+    <wsdl:part name="userNo" type="s:string" />
+    <wsdl:part name="date" type="s:dateTime" />
+    <wsdl:part name="editUserNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listAllRolesNotAssociatedWithUserSoapOut">
+    <wsdl:part name="listAllRolesNotAssociatedWithUserResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listRolesForUserSoapIn">
+    <wsdl:part name="userNo" type="s:string" />
+    <wsdl:part name="date" type="s:dateTime" />
+    <wsdl:part name="editUserNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listRolesForUserSoapOut">
+    <wsdl:part name="listRolesForUserResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listRolesUniqueForItProductSoapIn">
+    <wsdl:part name="itProductId" type="s:long" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listRolesUniqueForItProductSoapOut">
+    <wsdl:part name="listRolesUniqueForItProductResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listAllRolesSoapIn">
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listAllRolesSoapOut">
+    <wsdl:part name="listAllRolesResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listRolesWithProfilesForUserSoapIn">
+    <wsdl:part name="userNo" type="s:string" />
+    <wsdl:part name="editUserNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listRolesWithProfilesForUserSoapOut">
+    <wsdl:part name="listRolesWithProfilesForUserResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listAllITSystemsSoapIn">
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listAllITSystemsSoapOut">
+    <wsdl:part name="listAllITSystemsResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getItProductXMLSoapIn">
+    <wsdl:part name="itProductId" type="s:long" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getItProductXMLSoapOut">
+    <wsdl:part name="getItProductXMLResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="searchITSystemSoapIn">
+    <wsdl:part name="search" type="s:string" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="searchITSystemSoapOut">
+    <wsdl:part name="searchITSystemResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserInformationSoapIn">
+    <wsdl:part name="editUserNo" type="s:string" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserInformationSoapOut">
+    <wsdl:part name="getUserInformationResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserInformationMUCDSoapIn">
+    <wsdl:part name="editUserNo" type="s:string" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserInformationMUCDSoapOut">
+    <wsdl:part name="getUserInformationMUCDResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getADUserInformationByNameSoapIn">
+    <wsdl:part name="editName" type="s:string" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getADUserInformationByNameSoapOut">
+    <wsdl:part name="getADUserInformationByNameResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="searchUserSoapIn">
+    <wsdl:part name="search" type="s:string" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="searchUserSoapOut">
+    <wsdl:part name="searchUserResult" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="isAuthorizedXMLHttpPostIn">
+    <wsdl:part name="accessProfileRequestXML" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="isAuthorizedXMLHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="isAuthorizedXMLFromParamsHttpPostIn">
+    <wsdl:part name="userNo" type="s:string" />
+    <wsdl:part name="systemRoleName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="isAuthorizedXMLFromParamsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="isAuthorizedHttpPostIn">
+    <wsdl:part name="userNo" type="s:string" />
+    <wsdl:part name="systemRoleName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="isAuthorizedHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAccessProfileHttpPostIn">
+    <wsdl:part name="userNo" type="s:string" />
+    <wsdl:part name="systemId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAccessProfileHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAccessProfileByIdHttpPostIn">
+    <wsdl:part name="accessProfileTypeId" type="s:string" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAccessProfileByIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAccessProfileForSystemRoleXMLFromParamsHttpPostIn">
+    <wsdl:part name="userNo" type="s:string" />
+    <wsdl:part name="systemRoleName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAccessProfileForSystemRoleXMLFromParamsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAccessProfileForUserRoleHttpPostIn">
+    <wsdl:part name="roleId" type="s:string" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAccessProfileForUserRoleHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAccessProfileValuesForUserRoleHttpPostIn">
+    <wsdl:part name="userNo" type="s:string" />
+    <wsdl:part name="roleId" type="s:string" />
+    <wsdl:part name="editUserNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAccessProfileValuesForUserRoleHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="listAllAccessProfileValueTypesHttpPostIn">
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listAllAccessProfileValueTypesHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="listRolesForItProductHttpPostIn">
+    <wsdl:part name="itProductId" type="s:string" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listRolesForItProductHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getRolesForSystemRoleHttpPostIn">
+    <wsdl:part name="systemRoleName" type="s:string" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getRolesForSystemRoleHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getRoleByIdHttpPostIn">
+    <wsdl:part name="roleId" type="s:string" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getRoleByIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getSystemRoleByNameHttpPostIn">
+    <wsdl:part name="systemRoleName" type="s:string" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getSystemRoleByNameHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getSystemRoleForItProductAndRoleHttpPostIn">
+    <wsdl:part name="userNo" type="s:string" />
+    <wsdl:part name="itProductId" type="s:string" />
+    <wsdl:part name="roleId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getSystemRoleForItProductAndRoleHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="listSystemRolesForITSystemHttpPostIn">
+    <wsdl:part name="userNo" type="s:string" />
+    <wsdl:part name="itProductId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listSystemRolesForITSystemHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="listAllRolesNotAssociatedWithUserHttpPostIn">
+    <wsdl:part name="userNo" type="s:string" />
+    <wsdl:part name="date" type="s:string" />
+    <wsdl:part name="editUserNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listAllRolesNotAssociatedWithUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="listRolesForUserHttpPostIn">
+    <wsdl:part name="userNo" type="s:string" />
+    <wsdl:part name="date" type="s:string" />
+    <wsdl:part name="editUserNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listRolesForUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="listRolesUniqueForItProductHttpPostIn">
+    <wsdl:part name="itProductId" type="s:string" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listRolesUniqueForItProductHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="listAllRolesHttpPostIn">
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listAllRolesHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="listRolesWithProfilesForUserHttpPostIn">
+    <wsdl:part name="userNo" type="s:string" />
+    <wsdl:part name="editUserNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listRolesWithProfilesForUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="listAllITSystemsHttpPostIn">
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="listAllITSystemsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getItProductXMLHttpPostIn">
+    <wsdl:part name="itProductId" type="s:string" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getItProductXMLHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="searchITSystemHttpPostIn">
+    <wsdl:part name="search" type="s:string" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="searchITSystemHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserInformationHttpPostIn">
+    <wsdl:part name="editUserNo" type="s:string" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserInformationHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserInformationMUCDHttpPostIn">
+    <wsdl:part name="editUserNo" type="s:string" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserInformationMUCDHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getADUserInformationByNameHttpPostIn">
+    <wsdl:part name="editName" type="s:string" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getADUserInformationByNameHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveDirectoryUserInformationHttpPostIn">
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="callerId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveDirectoryUserInformationHttpPostOut">
+    <wsdl:part name="Body" element="tns:ActiveDirectoryUserInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="searchUserHttpPostIn">
+    <wsdl:part name="search" type="s:string" />
+    <wsdl:part name="userNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="searchUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="AuthReaderSoap">
+    <wsdl:operation name="GetActiveDirectoryUserInformation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets user information from configured active directory.</wsdl:documentation>
+      <wsdl:input message="tns:GetActiveDirectoryUserInformationSoapIn" />
+      <wsdl:output message="tns:GetActiveDirectoryUserInformationSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AuthReaderSoap1">
+    <wsdl:operation name="isAuthorizedXML">
+      <wsdl:input message="tns:isAuthorizedXMLSoapIn" />
+      <wsdl:output message="tns:isAuthorizedXMLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isAuthorizedXMLFromParams">
+      <wsdl:input message="tns:isAuthorizedXMLFromParamsSoapIn" />
+      <wsdl:output message="tns:isAuthorizedXMLFromParamsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isAuthorized">
+      <wsdl:input message="tns:isAuthorizedSoapIn" />
+      <wsdl:output message="tns:isAuthorizedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccessProfile">
+      <wsdl:input message="tns:getAccessProfileSoapIn" />
+      <wsdl:output message="tns:getAccessProfileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccessProfileById">
+      <wsdl:input message="tns:getAccessProfileByIdSoapIn" />
+      <wsdl:output message="tns:getAccessProfileByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccessProfileForSystemRoleXMLFromParams">
+      <wsdl:input message="tns:getAccessProfileForSystemRoleXMLFromParamsSoapIn" />
+      <wsdl:output message="tns:getAccessProfileForSystemRoleXMLFromParamsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccessProfileForUserRole">
+      <wsdl:input message="tns:getAccessProfileForUserRoleSoapIn" />
+      <wsdl:output message="tns:getAccessProfileForUserRoleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccessProfileValuesForUserRole">
+      <wsdl:input message="tns:getAccessProfileValuesForUserRoleSoapIn" />
+      <wsdl:output message="tns:getAccessProfileValuesForUserRoleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listAllAccessProfileValueTypes">
+      <wsdl:input message="tns:listAllAccessProfileValueTypesSoapIn" />
+      <wsdl:output message="tns:listAllAccessProfileValueTypesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listRolesForItProduct">
+      <wsdl:input message="tns:listRolesForItProductSoapIn" />
+      <wsdl:output message="tns:listRolesForItProductSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRolesForSystemRole">
+      <wsdl:input message="tns:getRolesForSystemRoleSoapIn" />
+      <wsdl:output message="tns:getRolesForSystemRoleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRoleById">
+      <wsdl:input message="tns:getRoleByIdSoapIn" />
+      <wsdl:output message="tns:getRoleByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSystemRoleByName">
+      <wsdl:input message="tns:getSystemRoleByNameSoapIn" />
+      <wsdl:output message="tns:getSystemRoleByNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSystemRoleForItProductAndRole">
+      <wsdl:input message="tns:getSystemRoleForItProductAndRoleSoapIn" />
+      <wsdl:output message="tns:getSystemRoleForItProductAndRoleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listSystemRolesForITSystem">
+      <wsdl:input message="tns:listSystemRolesForITSystemSoapIn" />
+      <wsdl:output message="tns:listSystemRolesForITSystemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listAllRolesNotAssociatedWithUser">
+      <wsdl:input message="tns:listAllRolesNotAssociatedWithUserSoapIn" />
+      <wsdl:output message="tns:listAllRolesNotAssociatedWithUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listRolesForUser">
+      <wsdl:input message="tns:listRolesForUserSoapIn" />
+      <wsdl:output message="tns:listRolesForUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listRolesUniqueForItProduct">
+      <wsdl:input message="tns:listRolesUniqueForItProductSoapIn" />
+      <wsdl:output message="tns:listRolesUniqueForItProductSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listAllRoles">
+      <wsdl:input message="tns:listAllRolesSoapIn" />
+      <wsdl:output message="tns:listAllRolesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listRolesWithProfilesForUser">
+      <wsdl:input message="tns:listRolesWithProfilesForUserSoapIn" />
+      <wsdl:output message="tns:listRolesWithProfilesForUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listAllITSystems">
+      <wsdl:input message="tns:listAllITSystemsSoapIn" />
+      <wsdl:output message="tns:listAllITSystemsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getItProductXML">
+      <wsdl:input message="tns:getItProductXMLSoapIn" />
+      <wsdl:output message="tns:getItProductXMLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="searchITSystem">
+      <wsdl:input message="tns:searchITSystemSoapIn" />
+      <wsdl:output message="tns:searchITSystemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserInformation">
+      <wsdl:input message="tns:getUserInformationSoapIn" />
+      <wsdl:output message="tns:getUserInformationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserInformationMUCD">
+      <wsdl:input message="tns:getUserInformationMUCDSoapIn" />
+      <wsdl:output message="tns:getUserInformationMUCDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getADUserInformationByName">
+      <wsdl:input message="tns:getADUserInformationByNameSoapIn" />
+      <wsdl:output message="tns:getADUserInformationByNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="searchUser">
+      <wsdl:input message="tns:searchUserSoapIn" />
+      <wsdl:output message="tns:searchUserSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AuthReaderSoap3">
+    <wsdl:operation name="isAuthorizedXML">
+      <wsdl:input message="tns:isAuthorizedXMLHttpPostIn" />
+      <wsdl:output message="tns:isAuthorizedXMLHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isAuthorizedXMLFromParams">
+      <wsdl:input message="tns:isAuthorizedXMLFromParamsHttpPostIn" />
+      <wsdl:output message="tns:isAuthorizedXMLFromParamsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isAuthorized">
+      <wsdl:input message="tns:isAuthorizedHttpPostIn" />
+      <wsdl:output message="tns:isAuthorizedHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccessProfile">
+      <wsdl:input message="tns:getAccessProfileHttpPostIn" />
+      <wsdl:output message="tns:getAccessProfileHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccessProfileById">
+      <wsdl:input message="tns:getAccessProfileByIdHttpPostIn" />
+      <wsdl:output message="tns:getAccessProfileByIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccessProfileForSystemRoleXMLFromParams">
+      <wsdl:input message="tns:getAccessProfileForSystemRoleXMLFromParamsHttpPostIn" />
+      <wsdl:output message="tns:getAccessProfileForSystemRoleXMLFromParamsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccessProfileForUserRole">
+      <wsdl:input message="tns:getAccessProfileForUserRoleHttpPostIn" />
+      <wsdl:output message="tns:getAccessProfileForUserRoleHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccessProfileValuesForUserRole">
+      <wsdl:input message="tns:getAccessProfileValuesForUserRoleHttpPostIn" />
+      <wsdl:output message="tns:getAccessProfileValuesForUserRoleHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listAllAccessProfileValueTypes">
+      <wsdl:input message="tns:listAllAccessProfileValueTypesHttpPostIn" />
+      <wsdl:output message="tns:listAllAccessProfileValueTypesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listRolesForItProduct">
+      <wsdl:input message="tns:listRolesForItProductHttpPostIn" />
+      <wsdl:output message="tns:listRolesForItProductHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRolesForSystemRole">
+      <wsdl:input message="tns:getRolesForSystemRoleHttpPostIn" />
+      <wsdl:output message="tns:getRolesForSystemRoleHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRoleById">
+      <wsdl:input message="tns:getRoleByIdHttpPostIn" />
+      <wsdl:output message="tns:getRoleByIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSystemRoleByName">
+      <wsdl:input message="tns:getSystemRoleByNameHttpPostIn" />
+      <wsdl:output message="tns:getSystemRoleByNameHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSystemRoleForItProductAndRole">
+      <wsdl:input message="tns:getSystemRoleForItProductAndRoleHttpPostIn" />
+      <wsdl:output message="tns:getSystemRoleForItProductAndRoleHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listSystemRolesForITSystem">
+      <wsdl:input message="tns:listSystemRolesForITSystemHttpPostIn" />
+      <wsdl:output message="tns:listSystemRolesForITSystemHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listAllRolesNotAssociatedWithUser">
+      <wsdl:input message="tns:listAllRolesNotAssociatedWithUserHttpPostIn" />
+      <wsdl:output message="tns:listAllRolesNotAssociatedWithUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listRolesForUser">
+      <wsdl:input message="tns:listRolesForUserHttpPostIn" />
+      <wsdl:output message="tns:listRolesForUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listRolesUniqueForItProduct">
+      <wsdl:input message="tns:listRolesUniqueForItProductHttpPostIn" />
+      <wsdl:output message="tns:listRolesUniqueForItProductHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listAllRoles">
+      <wsdl:input message="tns:listAllRolesHttpPostIn" />
+      <wsdl:output message="tns:listAllRolesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listRolesWithProfilesForUser">
+      <wsdl:input message="tns:listRolesWithProfilesForUserHttpPostIn" />
+      <wsdl:output message="tns:listRolesWithProfilesForUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listAllITSystems">
+      <wsdl:input message="tns:listAllITSystemsHttpPostIn" />
+      <wsdl:output message="tns:listAllITSystemsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getItProductXML">
+      <wsdl:input message="tns:getItProductXMLHttpPostIn" />
+      <wsdl:output message="tns:getItProductXMLHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="searchITSystem">
+      <wsdl:input message="tns:searchITSystemHttpPostIn" />
+      <wsdl:output message="tns:searchITSystemHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserInformation">
+      <wsdl:input message="tns:getUserInformationHttpPostIn" />
+      <wsdl:output message="tns:getUserInformationHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserInformationMUCD">
+      <wsdl:input message="tns:getUserInformationMUCDHttpPostIn" />
+      <wsdl:output message="tns:getUserInformationMUCDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getADUserInformationByName">
+      <wsdl:input message="tns:getADUserInformationByNameHttpPostIn" />
+      <wsdl:output message="tns:getADUserInformationByNameHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveDirectoryUserInformation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets user information from configured active directory.</wsdl:documentation>
+      <wsdl:input message="tns:GetActiveDirectoryUserInformationHttpPostIn" />
+      <wsdl:output message="tns:GetActiveDirectoryUserInformationHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="searchUser">
+      <wsdl:input message="tns:searchUserHttpPostIn" />
+      <wsdl:output message="tns:searchUserHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AuthReaderSoap" type="tns:AuthReaderSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetActiveDirectoryUserInformation">
+      <soap:operation soapAction="http://www.mytravel.se/GetActiveDirectoryUserInformation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AuthReaderSoap1" type="tns:AuthReaderSoap1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="isAuthorizedXML">
+      <soap:operation soapAction="http://www.mytravel.se/isAuthorizedXML" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isAuthorizedXMLFromParams">
+      <soap:operation soapAction="http://www.mytravel.se/isAuthorizedXMLFromParams" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isAuthorized">
+      <soap:operation soapAction="http://www.mytravel.se/isAuthorized" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccessProfile">
+      <soap:operation soapAction="http://www.mytravel.se/getAccessProfile" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccessProfileById">
+      <soap:operation soapAction="http://www.mytravel.se/getAccessProfileById" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccessProfileForSystemRoleXMLFromParams">
+      <soap:operation soapAction="http://www.mytravel.se/getAccessProfileForSystemRoleXMLFromParams" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccessProfileForUserRole">
+      <soap:operation soapAction="http://www.mytravel.se/getAccessProfileForUserRole" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccessProfileValuesForUserRole">
+      <soap:operation soapAction="http://www.mytravel.se/getAccessProfileValuesForUserRole" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllAccessProfileValueTypes">
+      <soap:operation soapAction="http://www.mytravel.se/listAllAccessProfileValueTypes" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRolesForItProduct">
+      <soap:operation soapAction="http://www.mytravel.se/listRolesForItProduct" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRolesForSystemRole">
+      <soap:operation soapAction="http://www.mytravel.se/getRolesForSystemRole" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRoleById">
+      <soap:operation soapAction="http://www.mytravel.se/getRoleById" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSystemRoleByName">
+      <soap:operation soapAction="http://www.mytravel.se/getSystemRoleByName" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSystemRoleForItProductAndRole">
+      <soap:operation soapAction="http://www.mytravel.se/getSystemRoleForItProductAndRole" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listSystemRolesForITSystem">
+      <soap:operation soapAction="http://www.mytravel.se/listSystemRolesForITSystem" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllRolesNotAssociatedWithUser">
+      <soap:operation soapAction="http://www.mytravel.se/listAllRolesNotAssociatedWithUser" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRolesForUser">
+      <soap:operation soapAction="http://www.mytravel.se/listRolesForUser" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRolesUniqueForItProduct">
+      <soap:operation soapAction="http://www.mytravel.se/listRolesUniqueForItProduct" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllRoles">
+      <soap:operation soapAction="http://www.mytravel.se/listAllRoles" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRolesWithProfilesForUser">
+      <soap:operation soapAction="http://www.mytravel.se/listRolesWithProfilesForUser" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllITSystems">
+      <soap:operation soapAction="http://www.mytravel.se/listAllITSystems" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getItProductXML">
+      <soap:operation soapAction="http://www.mytravel.se/getItProductXML" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchITSystem">
+      <soap:operation soapAction="http://www.mytravel.se/searchITSystem" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserInformation">
+      <soap:operation soapAction="http://www.mytravel.se/getUserInformation" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserInformationMUCD">
+      <soap:operation soapAction="http://www.mytravel.se/getUserInformationMUCD" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getADUserInformationByName">
+      <soap:operation soapAction="http://www.mytravel.se/getADUserInformationByName" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchUser">
+      <soap:operation soapAction="http://www.mytravel.se/searchUser" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AuthReaderSoap12" type="tns:AuthReaderSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetActiveDirectoryUserInformation">
+      <soap12:operation soapAction="http://www.mytravel.se/GetActiveDirectoryUserInformation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AuthReaderSoap2" type="tns:AuthReaderSoap1">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="isAuthorizedXML">
+      <soap12:operation soapAction="http://www.mytravel.se/isAuthorizedXML" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isAuthorizedXMLFromParams">
+      <soap12:operation soapAction="http://www.mytravel.se/isAuthorizedXMLFromParams" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isAuthorized">
+      <soap12:operation soapAction="http://www.mytravel.se/isAuthorized" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccessProfile">
+      <soap12:operation soapAction="http://www.mytravel.se/getAccessProfile" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccessProfileById">
+      <soap12:operation soapAction="http://www.mytravel.se/getAccessProfileById" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccessProfileForSystemRoleXMLFromParams">
+      <soap12:operation soapAction="http://www.mytravel.se/getAccessProfileForSystemRoleXMLFromParams" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccessProfileForUserRole">
+      <soap12:operation soapAction="http://www.mytravel.se/getAccessProfileForUserRole" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccessProfileValuesForUserRole">
+      <soap12:operation soapAction="http://www.mytravel.se/getAccessProfileValuesForUserRole" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllAccessProfileValueTypes">
+      <soap12:operation soapAction="http://www.mytravel.se/listAllAccessProfileValueTypes" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRolesForItProduct">
+      <soap12:operation soapAction="http://www.mytravel.se/listRolesForItProduct" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRolesForSystemRole">
+      <soap12:operation soapAction="http://www.mytravel.se/getRolesForSystemRole" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRoleById">
+      <soap12:operation soapAction="http://www.mytravel.se/getRoleById" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSystemRoleByName">
+      <soap12:operation soapAction="http://www.mytravel.se/getSystemRoleByName" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSystemRoleForItProductAndRole">
+      <soap12:operation soapAction="http://www.mytravel.se/getSystemRoleForItProductAndRole" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listSystemRolesForITSystem">
+      <soap12:operation soapAction="http://www.mytravel.se/listSystemRolesForITSystem" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllRolesNotAssociatedWithUser">
+      <soap12:operation soapAction="http://www.mytravel.se/listAllRolesNotAssociatedWithUser" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRolesForUser">
+      <soap12:operation soapAction="http://www.mytravel.se/listRolesForUser" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRolesUniqueForItProduct">
+      <soap12:operation soapAction="http://www.mytravel.se/listRolesUniqueForItProduct" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllRoles">
+      <soap12:operation soapAction="http://www.mytravel.se/listAllRoles" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRolesWithProfilesForUser">
+      <soap12:operation soapAction="http://www.mytravel.se/listRolesWithProfilesForUser" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllITSystems">
+      <soap12:operation soapAction="http://www.mytravel.se/listAllITSystems" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getItProductXML">
+      <soap12:operation soapAction="http://www.mytravel.se/getItProductXML" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchITSystem">
+      <soap12:operation soapAction="http://www.mytravel.se/searchITSystem" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserInformation">
+      <soap12:operation soapAction="http://www.mytravel.se/getUserInformation" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserInformationMUCD">
+      <soap12:operation soapAction="http://www.mytravel.se/getUserInformationMUCD" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getADUserInformationByName">
+      <soap12:operation soapAction="http://www.mytravel.se/getADUserInformationByName" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchUser">
+      <soap12:operation soapAction="http://www.mytravel.se/searchUser" style="rpc" />
+      <wsdl:input>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="encoded" namespace="http://www.mytravel.se" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AuthReaderSoap3" type="tns:AuthReaderSoap3">
+    <http:binding verb="POST" />
+    <wsdl:operation name="isAuthorizedXML">
+      <http:operation location="/isAuthorizedXML" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isAuthorizedXMLFromParams">
+      <http:operation location="/isAuthorizedXMLFromParams" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isAuthorized">
+      <http:operation location="/isAuthorized" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccessProfile">
+      <http:operation location="/getAccessProfile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccessProfileById">
+      <http:operation location="/getAccessProfileById" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccessProfileForSystemRoleXMLFromParams">
+      <http:operation location="/getAccessProfileForSystemRoleXMLFromParams" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccessProfileForUserRole">
+      <http:operation location="/getAccessProfileForUserRole" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccessProfileValuesForUserRole">
+      <http:operation location="/getAccessProfileValuesForUserRole" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllAccessProfileValueTypes">
+      <http:operation location="/listAllAccessProfileValueTypes" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRolesForItProduct">
+      <http:operation location="/listRolesForItProduct" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRolesForSystemRole">
+      <http:operation location="/getRolesForSystemRole" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRoleById">
+      <http:operation location="/getRoleById" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSystemRoleByName">
+      <http:operation location="/getSystemRoleByName" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSystemRoleForItProductAndRole">
+      <http:operation location="/getSystemRoleForItProductAndRole" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listSystemRolesForITSystem">
+      <http:operation location="/listSystemRolesForITSystem" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllRolesNotAssociatedWithUser">
+      <http:operation location="/listAllRolesNotAssociatedWithUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRolesForUser">
+      <http:operation location="/listRolesForUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRolesUniqueForItProduct">
+      <http:operation location="/listRolesUniqueForItProduct" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllRoles">
+      <http:operation location="/listAllRoles" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRolesWithProfilesForUser">
+      <http:operation location="/listRolesWithProfilesForUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listAllITSystems">
+      <http:operation location="/listAllITSystems" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getItProductXML">
+      <http:operation location="/getItProductXML" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchITSystem">
+      <http:operation location="/searchITSystem" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserInformation">
+      <http:operation location="/getUserInformation" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserInformationMUCD">
+      <http:operation location="/getUserInformationMUCD" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getADUserInformationByName">
+      <http:operation location="/getADUserInformationByName" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveDirectoryUserInformation">
+      <http:operation location="/GetActiveDirectoryUserInformation" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchUser">
+      <http:operation location="/searchUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AuthReader">
+    <wsdl:port name="AuthReaderSoap" binding="tns:AuthReaderSoap">
+      <soap:address location="http://organizationws.prod.int/AuthWS/AuthReader.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AuthReaderSoap1" binding="tns:AuthReaderSoap1">
+      <soap:address location="http://organizationws.prod.int/AuthWS/AuthReader.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AuthReaderSoap12" binding="tns:AuthReaderSoap12">
+      <soap12:address location="http://organizationws.prod.int/AuthWS/AuthReader.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AuthReaderSoap2" binding="tns:AuthReaderSoap2">
+      <soap12:address location="http://organizationws.prod.int/AuthWS/AuthReader.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AuthReaderSoap3" binding="tns:AuthReaderSoap3">
+      <http:address location="http://organizationws.prod.int/AuthWS/AuthReader.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

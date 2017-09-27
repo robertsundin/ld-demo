@@ -13,8 +13,8 @@
 		<Label x:Name="feature1" Content="On or off" HorizontalAlignment="Left" Margin="27,103,0,0" VerticalAlignment="Top" Width="140"/>
 		<Label x:Name="feature2" Content="Some number" HorizontalAlignment="Left" Margin="27,147,0,0" VerticalAlignment="Top" Width="176"/>
 		<Label x:Name="feature3" Content="Current environment" HorizontalAlignment="Left" Margin="27,190,0,0" VerticalAlignment="Top" Width="176"/>
-		<Label x:Name="onOrOff" Content="" HorizontalAlignment="Left" Margin="208,98,0,0" VerticalAlignment="Top" Width="67" FontSize="16" FontWeight="Bold"/>
-		<Label x:Name="someNumber" Content="" HorizontalAlignment="Left" Margin="208,142,0,0" VerticalAlignment="Top" Width="67" FontSize="16" FontWeight="Bold"/>
-		<Label x:Name="currentEnvironment" Content="" HorizontalAlignment="Left" Margin="208,185,0,0" VerticalAlignment="Top" Width="67" FontSize="16" FontWeight="Bold"/>
+		<Label x:Name="onOrOff" Content="" HorizontalAlignment="Left" Margin="208,98,0,0" VerticalAlignment="Top" Width="90" FontSize="16" FontWeight="Bold"/>
+		<Label x:Name="someNumber" Content="" HorizontalAlignment="Left" Margin="208,142,0,0" VerticalAlignment="Top" Width="90" FontSize="16" FontWeight="Bold"/>
+		<Label x:Name="currentEnvironment" Content="" HorizontalAlignment="Left" Margin="208,185,0,0" VerticalAlignment="Top" Width="90" FontSize="16" FontWeight="Bold"/>
 	</Grid>
 </Window>

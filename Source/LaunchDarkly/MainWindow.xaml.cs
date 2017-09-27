@@ -22,7 +22,7 @@ namespace LaunchDarkly
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		private static readonly LdClient _client = new LdClient("sdk-1898dd97-4c2e-4ee9-bbac-80448878f407");
+		private static readonly LdClient _client = new LdClient("sdk-fbcf8b2f-49a6-4e0b-a13a-d0be20282823");
 
 		public MainWindow()
 		{
@@ -32,10 +32,9 @@ namespace LaunchDarkly
 		private void go_Click(object sender, RoutedEventArgs e)
 		{
 			var user = GetUser();
-
+			
 			// BOOL
 			onOrOff.Content = _client.BoolVariation("on-or-off", user, false);
-
 
 			// INT
 			someNumber.Content = _client.IntVariation("some-number", user, 999);
@@ -56,16 +55,26 @@ namespace LaunchDarkly
 				return User.WithKey("xxx").AndAnonymous(true);
 			}
 
-			return User.WithKey(user)
-				.AndFirstName("My")
-				.AndLastName("Name")
-				.AndEmail("unknown@thomascook.se")
-				.AndCustomAttribute("auth_level", GetRoles(user));
+			return GetFromAuth(user);
+		}
+
+		private User GetFromAuth(string user)
+		{
+			using(var authReader = new AuthReader.AuthReaderSoapClient("AuthReaderSoap"))
+			{
+				var adUser = authReader.GetActiveDirectoryUserInformation(user, null);
+
+				return User.WithKey(user)
+					.AndFirstName(adUser.User.FirstName)
+					.AndLastName(adUser.User.LastName)
+					.AndEmail(adUser.User.Email)
+					.AndCustomAttribute("auth_level", GetRoles(user));
+			}
 		}
 
 		private List<string> GetRoles(string user)
 		{
-			if(user == "robban")
+			if(user == "1535")
 				return new List<string>{ "developer", "user" };
 
 			return new List<string>{ "user" };
