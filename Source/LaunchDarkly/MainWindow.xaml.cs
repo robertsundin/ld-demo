@@ -52,7 +52,8 @@ namespace LaunchDarkly
 
 			if(string.IsNullOrEmpty(user))
 			{
-				return User.WithKey("xxx").AndAnonymous(true);
+				return User.WithKey(Guid.NewGuid().ToString())
+					.AndAnonymous(true);
 			}
 
 			return GetFromAuth(user);
