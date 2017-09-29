@@ -40,7 +40,7 @@ namespace LaunchDarkly
 			someNumber.Content = _client.IntVariation("some-number", user, 999);
 
 			// JSON
-			var value = _client.JsonVariation("current-environment", user, "NONE");
+			var value = _client.JsonVariation("current-environment", user, "{}");
 			var environment = value["Environment"].Value<string>();
 
 			currentEnvironment.Content = environment;
